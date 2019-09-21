@@ -1,10 +1,11 @@
+const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 const path = require('path')
 
 const config = {
-  entry: ['./src/index.js'],
+  entry: [path.resolve(__dirname, '../src/index.js')],
 
   output: {
     filename: 'bundle.js',
@@ -47,6 +48,10 @@ const config = {
     new HtmlWebpackPlugin({
       inject: true,
       template: path.resolve(__dirname, '../public/index.html')
+    }),
+    new webpack.DllReferencePlugin({
+      context: process.cwd(),
+      manifest: require(path.resolve('./public/dll/vendor-manifest.json'))
     })
   ]
 }

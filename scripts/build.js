@@ -1,28 +1,11 @@
-const rm = require('rimraf')
 const path = require('path')
-const chalk = require('chalk')
 const webpack = require('webpack')
 const prodConfig = require('../config/webpack.config.prod')
 
-rm(path.resolve(__dirname, '../build'), err => {
+webpack(prodConfig, function (err, stats) {
   if (err) throw err
-  webpack(prodConfig, function (err, stats) {
-    if (err) throw err
-    process.stdout.write(
-      stats.toString({
-        colors: true,
-        modules: false,
-        children: false,
-        chunks: false,
-        chunkModules: false
-      }) + '\n\n'
-    )
 
-    if (stats.hasErrors()) {
-      console.log(chalk.red('  Build failed with errors.\n'))
-      process.exit(1)
-    }
-
-    console.log(chalk.cyan('  Build complete.\n'))
-  })
+  if (stats.hasErrors()) {
+    process.exit(1)
+  }
 })

@@ -1,24 +1,27 @@
-const { resolve } = require('path')
+const path = require('path')
 const webpack = require('webpack')
-const dependencies = require('../package.json').dependencies
 
 module.exports = {
   mode: process.env.API_ENV === 'production' ? 'production' : 'development',
 
   entry: {
-    vendor: dependencies
+    vendor: [
+      'react',
+      'react-dom'
+    ]
   },
 
   output: {
-    path: resolve(__dirname, '../public/dll'),
-    filename: '[name].js',
-    library: '[name]'
+    path: path.resolve(__dirname, '../public/dll'),
+    filename: '[name].dll.js',
+    library: '_dll_[name]_[hash]'
   },
 
   plugins: [
     new webpack.DllPlugin({
-      path: resolve(__dirname, '../public/dll/[name]-manifest.json'),
-      name: '[name]'
+      context: process.cwd(),
+      path: path.resolve(__dirname, '../public/dll/[name]-manifest.json'),
+      name: '_dll_[name]_[hash]'
     })
   ]
 }

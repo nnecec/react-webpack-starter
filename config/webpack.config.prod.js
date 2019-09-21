@@ -1,9 +1,8 @@
 const webpack = require('webpack')
 const merge = require('webpack-merge')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const baseConfig = require('./webpack.config.base')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const TerserPlugin = require('terser-webpack-plugin')
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+// const TerserPlugin = require('terser-webpack-plugin')
 
 const isProdEnv = process.env.API_ENV === 'production'
 const suffix = isProdEnv
@@ -33,29 +32,10 @@ const config = {
           enforce: true
         }
       }
-    },
-
-    minimizer: [
-      new TerserPlugin({
-        parallel: true,
-        sourceMap: isProdEnv,
-        cache: true,
-        terserOptions: {
-          compress: {
-            drop_console: true
-          }
-        }
-      }),
-
-      new OptimizeCSSAssetsPlugin({})
-    ]
+    }
   },
-
   plugins: [
-    new MiniCssExtractPlugin({
-      filename: 'assets/[name].css'
-      // chunkFilename: 'assets/[id].[hash:6].css',
-    })
+    new CleanWebpackPlugin()
   ]
 }
 
