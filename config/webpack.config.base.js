@@ -1,10 +1,7 @@
-const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 const path = require('path')
-
-const isProdEnv = process.env.NODE_ENV === 'production'
 
 const config = {
   entry: ['./src/index.js'],

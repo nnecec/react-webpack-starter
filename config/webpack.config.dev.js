@@ -1,6 +1,7 @@
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const baseConfig = require('./webpack.config.base')
+const { webpackConfig } = require('./index')
 
 const config = {
   mode: 'development',
@@ -11,7 +12,8 @@ const config = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin()
-  ]
+  ],
+  devServer: webpackConfig.devServer
 }
 
 module.exports = merge(baseConfig, config)
