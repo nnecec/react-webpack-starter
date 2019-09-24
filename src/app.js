@@ -1,6 +1,8 @@
 import React, { useMemo, useState } from 'react'
 import { hot } from 'react-hot-loader/root'
 
+import Emotion from './hooks/emotion'
+
 const App = () => {
   const [count, setCount] = useState(0)
   const [name, setName] = useState('')
@@ -24,6 +26,7 @@ const App = () => {
     return `my name is: ${name}`
   }
 
+  console.log('app -- rerender')
   return (
     <div>
       <h1>modify count</h1>
@@ -36,6 +39,8 @@ const App = () => {
       <h1>modify name</h1>
       <input type="text" value={name} onChange={handleChange} />
       <p>{memoName()}</p>
+
+      <Emotion />
     </div>
   )
 }
