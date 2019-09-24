@@ -17,8 +17,10 @@ module.exports = {
   },
   "plugins": [
     "react",
-    "import"
+    "import",
+    "react-hooks"
   ],
   "rules": {
+    "react/jsx-uses-react": 1,
   }
 };

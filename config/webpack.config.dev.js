@@ -2,6 +2,7 @@ const webpack = require('webpack')
 const merge = require('webpack-merge')
 const baseConfig = require('./webpack.config.base')
 const { webpackConfig } = require('./index')
+const path = require('path')
 
 const config = {
   mode: 'development',
@@ -9,6 +10,11 @@ const config = {
 
   output: {
     publicPath: '/'
+  },
+  resolve: {
+    alias: {
+      'react-dom': '@hot-loader/react-dom'
+    }
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin()

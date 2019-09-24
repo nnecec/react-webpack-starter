@@ -5,7 +5,8 @@ const presets = [
 const plugins = [
   '@babel/plugin-proposal-class-properties',
   '@babel/plugin-syntax-dynamic-import',
-  '@babel/plugin-transform-runtime'
+  '@babel/plugin-transform-runtime',
+  'react-hot-loader/babel'
 ]
 
 module.exports = {

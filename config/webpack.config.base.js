@@ -5,7 +5,10 @@ const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 const path = require('path')
 
 const config = {
-  entry: [path.resolve(__dirname, '../src/index.js')],
+  entry: [
+    'react-hot-loader/patch',
+    path.resolve(__dirname, '../src/index.js')
+  ],
 
   output: {
     filename: 'bundle.js',
