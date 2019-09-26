@@ -1,7 +1,7 @@
-const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
+const HardSourceWebpackPlugin = require('hard-source-webpack-plugin')
 const path = require('path')
 
 const config = {
@@ -52,10 +52,7 @@ const config = {
       inject: true,
       template: path.resolve(__dirname, '../public/index.html')
     }),
-    new webpack.DllReferencePlugin({
-      context: process.cwd(),
-      manifest: require(path.resolve('./public/dll/vendor-manifest.json'))
-    })
+    new HardSourceWebpackPlugin()
   ]
 }
 
