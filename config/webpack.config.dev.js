@@ -6,7 +6,7 @@ const path = require('path')
 
 const config = {
   mode: 'development',
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'eval-cheap-module-source-map',
 
   output: {
     publicPath: '/'

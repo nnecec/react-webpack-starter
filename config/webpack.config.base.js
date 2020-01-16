@@ -1,7 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
-const HardSourceWebpackPlugin = require('hard-source-webpack-plugin')
 const path = require('path')
 
 const config = {
@@ -49,10 +48,10 @@ const config = {
     new FriendlyErrorsWebpackPlugin(),
     new ProgressBarPlugin(),
     new HtmlWebpackPlugin({
-      inject: true,
+      // inject: true,
       template: path.resolve(__dirname, '../public/index.html')
-    }),
-    new HardSourceWebpackPlugin()
+    })
+    // new HardSourceWebpackPlugin()
   ]
 }
 
